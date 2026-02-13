@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tioluwanimi’s Valentine Adventure ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Georgia,serif;}
+body{background:#0a0a0a;color:#fff;overflow:hidden;}
+section{
+  height:100vh; width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+  position:absolute;
+  top:0; left:0;
+  opacity:0;
+  transition:opacity 1s ease, transform 1s ease;
+  transform:translateX(100%);
+}
+section.active{opacity:1; transform:translateX(0);}
+h1{font-size:40px;margin-bottom:20px;}
+p{max-width:900px;font-size:20px;line-height:1.6; margin-bottom:20px;}
+nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:1000;}
+button{padding:10px 20px;font-size:16px;border:none;border-radius:8px;cursor:pointer;margin:5px;}
+.heart{position:absolute;color:#ff4d6d;font-size:20px;animation:float linear infinite;opacity:0.7;cursor:pointer;}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
+#typewriter{font-size:20px;max-width:900px;white-space:pre-wrap;}
+#noBtn{position:absolute}
+video{max-width:90%;border-radius:10px;margin-top:20px;cursor:pointer;}
+.confetti{
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:1000;
+}
+.confetti-piece{
+  position:absolute;width:10px;height:10px;background:red;animation:confetti-fall 3s linear forwards;}
+@keyframes confetti-fall{0%{transform:translateY(0) rotate(0deg);}100%{transform:translateY(100vh) rotate(360deg);opacity:0;}}
+</style>
+</head>
+<body>
+
+<div class="confetti" id="confetti"></div>
+
+<!-- Floating hearts -->
+<script>
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*80+"%";
+  heart.style.top=Math.random()*80+"%";
+  heart.style.fontSize=(15+Math.random()*20)+"px";
+  heart.onclick=()=>alert("You found a secret 💌");
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),10000);
+},500);
+</script>
+
+<!-- Pages -->
+<section id="p1" class="active">
+  <h1>Welcome Tioluwanimi ❤️</h1>
+  <p>Welcome to a world where only you and I exist 🌌. Let’s start our Valentine journey together!</p>
+</section>
+
+<section id="p2">
+  <h1>From My Heart 💌</h1>
+  <p id="typewriter"></p>
+</section>
+
+<section id="p3">
+  <h1>Tap the Heart ❤️</h1>
+  <p>Click on the floating hearts above to see a secret message!</p>
+</section>
+
+<section id="p4">
+  <h1>Our Moments 🎥</h1>
+  <video id="vid" src="my_love.mp4"></video>
+  <p>Click the video to play ▶️</p>
+</section>
+
+<section id="p5">
+  <h1>50 Reasons Why I Love You 💖</h1>
+  <p id="reasons"></p>
+</section>
+
+<section id="p6">
+  <h1>Our Love Story 📖</h1>
+  <p>Since September 28, 2024 📅, every moment with you has been magical ✨. Our laughter, deep talks 🌙, silly jokes 😅… all part of our story 📖❤️</p>
+</section>
+
+<section id="p7">
+  <h1>You Changed Me ✨</h1>
+  <p>You made me a better person without trying. Loving you makes me want to grow 🌱, learn 🧠, and be the best version of myself.</p>
+</section>
+
+<section id="p8">
+  <h1>My Safe Place 🏠</h1>
+  <p>You are my peace 🕊️, my comfort 💗, my home 🏡, and my answered prayer 🙌🏽. I feel so blessed to have you.</p>
+</section>
+
+<section id="p9">
+  <h1>Will You Be My Valentine? 💖</h1>
+  <button onclick="yes()">YES 💘</button>
+  <button id="noBtn" onmouseover="moveNo()">NO 😅</button>
+</section>
+
+<section id="p10">
+  <h1>Forever With You ❤️</h1>
+  <p>I will keep choosing you, today, tomorrow, and always 💕. Tioluwanimi, you are my everything 🫶🏽</p>
+</section>
+
+<nav>
+  <button onclick="prev()">⬅ Prev</button>
+  <button onclick="next()">Next ➡</button>
+</nav>
+
+<script>
+let pages=document.querySelectorAll("section");
+let current=0;
+function showPage(i){
+  pages.forEach(p=>p.classList.remove("active"));
+  pages[i].classList.add("active");
+}
+function next(){if(current<pages.length-1){current++;showPage(current)}}
+function prev(){if(current>0){current--;showPage(current)}}
+showPage(current);
+
+// TYPEWRITER with paragraph reveal
+const paragraphs=[
+`Loving you has changed me in ways I never imagined were possible ✨
+Before you, life was moving… but after you, life began to make sense 💫
+You didn’t just enter my world — you became the calm in it 🌸, the joy in it 😊, the reason I smile at my phone for no reason 📱💖, the reason my heart feels full even on ordinary days.`,
+`Since September 28, 2024 📅, every single moment with you has felt like a gift I didn’t know I was praying for 🙏🏽
+The conversations 🗣️, the laughter 😂, the little disagreements 🤏🏽, the deep talks 🌙, the silly jokes 😅 — all of it became part of a story I’m proud to call ours 📖❤️`,
+`You have this beautiful way of understanding me without me saying too much 🤍
+You listen 👂🏽, you care 💞, you correct me with love, and you make me want to be a better man — not because you force me, but because loving you makes me want to grow 🌱`,
+`You taught me the importance of communication 🗨️, patience ⏳, and softness in love 🤲🏽
+You showed me that love is not just feelings, but actions, understanding, forgiveness, and effort 💪🏽❤️`,
+`Even in moments where we don’t agree 😌, I’ve come to realize it’s never you against me — it’s always us against the problem 🤝
+Tioluwanimi, you are selective 🎯, you are intentional 🧠, you are romantic in the purest way 💘, and you have a heart that is rare to find 💎`,
+`You are my peace 🕊️
+You are my favorite person 🌟
+You are my safe place 🏠
+You are my answered prayer 🙌🏽`,
+`I love the way you make me feel seen 👀
+I love how you support me 🙏🏽
+I love how you care 💗
+I love how you show up for me, even when I don’t ask.
+I love the way you love 🫶🏽`,
+`No matter what life brings 🌍, I want to grow with you 🌱, learn with you 📚, laugh with you 😂, build with you 🧱, and keep creating beautiful memories with you 📸`,
+`I don’t just love you for who you are — I love you for how you make me want to become better ✨
+I love you deeply, intentionally, and endlessly, Adumaadan mi 💖
+And I will keep choosing you, today, tomorrow, and always.`
+];
+let paraIndex=0;
+function typeParagraph(){
+  if(paraIndex<paragraphs.length){
+    let p = paragraphs[paraIndex];
+    let charIndex=0;
+    let el=document.getElementById("typewriter");
+    let interval=setInterval(()=>{
+      if(charIndex<p.length){
+        el.innerHTML+=p.charAt(charIndex);
+        charIndex++;
+      }else{
+        el.innerHTML+="\n\n";
+        paraIndex++;
+        clearInterval(interval);
+        setTimeout(typeParagraph,500);
+      }
+    },25);
+  }
+}
+typeParagraph();
+
+// Video click
+document.getElementById("vid").onclick=function(){this.play();}
+
+// 50 reasons animated reveal
+let reasons="";
+for(let j=1;j<=50;j++){
+  reasons+=j+". I love you for being amazing 💖<br>";
+}
+document.getElementById("reasons").innerHTML=reasons;
+
+// NO button dodge
+function moveNo(){
+  let btn=document.getElementById("noBtn");
+  btn.style.top=Math.random()*70+"%";
+  btn.style.left=Math.random()*70+"%";
+}
+function yes(){
+  // Confetti effect
+  const confettiContainer=document.getElementById("confetti");
+  for(let i=0;i<150;i++){
+    const conf=document.createElement("div");
+    conf.className="confetti-piece";
+    conf.style.left=Math.random()*100+"%";
+    conf.style.background=["#ff4d6d","#ff69b4","#ffb6c1","#fff0f5"][Math.floor(Math.random()*4)];
+    conf.style.width=(5+Math.random()*10)+"px";
+    conf.style.height=conf.style.width;
+    conf.style.animationDuration=(2+Math.random()*2)+"s";
+    conf.style.top="-10px";
+    conf.style.left=Math.random()*100+"%";
+    conf.style.transform="rotate("+Math.random()*360+"deg)";
+    confettiContainer.appendChild(conf);
+    setTimeout(()=>conf.remove(),4000);
+  }
+  alert("Yay! I love you ❤️");
+}
+</script>
+</body>
+  </html>
